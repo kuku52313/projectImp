@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/*---------------------------------------*/
+/* Register Form */
+/*---------------------------------------*/
+@font-face{
+  src: url(../font/GodoM.ttf);
+  font-family: godoM;
+}
+
+.product{
+    width: 100%;
+
+}
+
+.deletebtn {
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+    object-align:"right";
+    margin-right: 10px;
+}
+
+ .row {
+    display: inline-flexbox;
+    margin-bottom: 20px;
+    margin-top: 20px;
+ }
+
+ .ask_table {
+   width: 100%;
+   border: 1px solid #ff8497;
+ }
+
+ .ask_kind {
+   text-align: center;
+  width: 35%;
+ }
+
+ .ask_content {
+  text-align: center;
+   width: auto;
+ }
+
+ .product_info {
+   width: 30%;
+ }

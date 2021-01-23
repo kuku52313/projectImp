@@ -1,0 +1,108 @@
+/*---------------------------------------*/
+/* Register Form */
+/*---------------------------------------*/
+@font-face{
+  src: url(../font/GodoM.ttf);
+  font-family: godoM;
+}
+
+body {
+    background-color: white;
+
+}
+
+.insertform {
+    background-color: #f1f1f1;
+  width:800px;
+  margin:30px auto;
+  font-family: godoM;
+  border-radius: 10px;
+    border: 1px solid #bab5b5;
+} 
+
+
+.form-header  {
+  background-color: #bab5b5;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+ 
+}
+
+.form-header h1 {
+  font-size: 20px;
+  text-align:center;
+  color:rgb(255, 255, 255);
+}
+
+.stockInt {
+  font-size: 17px;
+  box-sizing: border-box;
+  width: 12%;
+  height: 34px;
+  color: #333333;
+  text-align: left;
+  border: 1px solid #bab5b5;
+  border-radius: 4px;
+  background: white;
+  outline: none;
+ 
+}
+.formText {
+    font-size: 17px;
+    box-sizing: border-box;
+    width: 70%;
+    height: 34px;
+    color: #333333;
+    text-align: left;
+    border: 1px solid #bab5b5;
+    border-radius: 4px;
+    background: white;
+    outline: none;
+
+}
+
+.formCode {
+    font-size: 17px;
+    box-sizing: border-box;
+    height: 34px;
+    color: #333333;
+    text-align: left;
+    border: 1px solid #bab5b5;
+    border-radius: 4px;
+    background: white;
+    outline: none;
+    width: 60%;
+}
+ .codeCheckBtn {
+	width: 10%;
+	cursor: pointer;
+	height: 37.78px;
+	background-color: #6c757d;
+	border: 0;
+	outline: none;
+	border-radius: 30px;
+	text-align: center;
+	font-family: "godoM";
+}
+.insertBtn {
+    display:inline-block;
+    padding:7px 18px;
+    background-color:  #bab5b5;
+    font-size:17px;
+    border:none;
+    border-radius:5px;
+    color: black;
+    cursor:pointer;
+    float: right;
+    left: 580px;
+    top: 50px;
+    margin-left: 10px;
+ }
+
+ .record {
+    display: inline-flexbox;
+    margin-bottom: 20px;
+    margin-top: 20px;
+ }

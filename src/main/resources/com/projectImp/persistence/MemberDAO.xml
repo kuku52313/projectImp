@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.projectImp.persistence.MemberDAO">
+    <insert id="registMember">
+        <![CDATA[
+        INSERT INTO MEMBER(MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_TEL, MEMBER_REGDATE)
+        VALUES (#{memberId}, #{memberPw}, #{memberName}, #{memberEmail}, #{memberTel}, NOW())
+        ]]>
+    </insert>
+    <insert id="registAuthorities">
+        <![CDATA[
+        INSERT INTO AUTHORITIES
+        VALUES (#{memberId}, #{authoritiesMember}, #{authoritiesManager, jdbcType=NULL}, #{authoritiesAdmin, jdbcType=NULL})
+        ]]>
+    </insert>
+    <select id="getMemberInfo" parameterType="java.lang.String" resultType="com.projectImp.domain.UserDetailsDTO">
+        <![CDATA[
+        SELECT *
+        FROM (SELECT M.MEMBER_ID,
+                     M.MEMBER_PW,
+                     M.MEMBER_NAME,
+                     M.MEMBER_EMAIL,
+                     M.MEMBER_TEL,
+                     A.AUTHORITIES_MEMBER,
+                     A.AUTHORITIES_MANAGER,
+                     A.AUTHORITIES_ADMIN
+              FROM MEMBER M,
+                   AUTHORITIES A
+              WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID) AS TABLES
+        WHERE MEMBER_ID = #{param}
+        ]]>
+    </select>
+
+    <select id="idCheckTest" resultType="int" >
+        select count(*) from member where member_id = #{param}
+    </select>
+</mapper>

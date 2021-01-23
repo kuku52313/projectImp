@@ -1,0 +1,346 @@
+@font-face {
+    font-family: "Godo";
+    src: url("/resources/font/GodoM.ttf");
+}
+
+.font-set {
+    font-family: "Godo";
+}
+
+.recycle-bin:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.toast-position {
+    width: 500px;
+    height: 300px;
+    background-color: black;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+}
+
+/*#ui-id-2 {*/
+/*    width: 100%;*/
+/*    !*height: 45px;*!*/
+/*    !*color: #1e1e1e;*!*/
+/*    font-size: 16px;*/
+/*    line-height: 50px;*/
+/*    vertical-align: middle;*/
+/*    background-color: red;*/
+/*    border: 1px red solid;*/
+/*}*/
+
+.basket-header > dt {
+    text-align: center;
+}
+
+body > header > div.row > div.col-10 > ul > li > a {
+    font-size: 20px;
+    font-family: "Godo";
+}
+
+.basket-card > div {
+    display: inline-block;
+    transition: 0.5s all;
+}
+
+.basket-card > div > * {
+    text-decoration: none;
+    color: black;
+}
+
+.basket-card > div:hover {
+    transform: translate(0, -20%);
+}
+
+body > header > div.row > div.col-10 > ul > li > div > div > ul > li > a {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Godo";
+}
+
+body > header > nav > div > ul > li > a {
+    color: #02264f;
+}
+
+.form-control::placeholder {
+    font-size: 0.95rem;
+    color: #02264f;
+    font-style: italic;
+}
+
+.navbar {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navbar_menu {
+    list-style: none;
+    color: aliceblue;
+    display: flex;
+}
+
+body > header > nav > div.col-4 > ul > li > a:hover {
+    color: rgb(255, 48, 79);
+    text-decoration: none;
+}
+
+.navbar_menu li {
+    padding: 8px 12px;
+}
+
+.navbar_menu > li > a {
+    font-family: Godo;
+}
+
+.navbar_toggleBtn {
+    display: none;
+    position: absolute;
+    right: 32px;
+    font-size: 24px;
+    color: rgb(255, 48, 79);
+}
+
+.active-pink {
+    border: none;
+    border-right: 0px;
+    border-top: 0px;
+    border-left: 0px;
+    border-bottom: 1px solid rgb(255, 48, 79);
+    box-shadow: 0 1px 0 0 #f48fb1;
+}
+
+.menu,
+.menu a,
+.menu ul,
+.menu li,
+.menu div,
+.menu form,
+.menu input {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+.menu a {
+    text-decoration: none;
+}
+
+.menu li {
+    width: 25%;
+    list-style: none;
+}
+
+.menu {
+    display: inline-block;
+    position: relative;
+    cursor: default;
+    z-index: 500;
+    text-align: center;
+    box-shadow: 0 0 1px 2px rgb(255, 48, 79);
+    border-radius: 0.25em;
+}
+
+.menu > li {
+    display: block;
+    float: left;
+}
+
+.menu > li > a {
+    position: relative;
+    display: block;
+    z-index: 510;
+    height: 54px;
+    padding: 0 20px;
+    line-height: 54px;
+
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    color: #fcfcfc;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.35);
+
+    background: rgb(255, 48, 79);
+
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.menu > li > div {
+    position: absolute;
+    display: block;
+    text-align: center;
+    width: 25%;
+
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+
+    background: #ffffff;
+    border-radius: 0 0 3px 3px;
+
+    -webkit-transition: all 0.3s ease 0.15s;
+    -moz-transition: all 0.3s ease 0.15s;
+    -o-transition: all 0.3s ease 0.15s;
+    -ms-transition: all 0.3s ease 0.15s;
+    transition: all 0.3s ease 0.15s;
+}
+
+.menu > li:hover > div {
+    opacity: 0.95;
+    visibility: visible;
+    overflow: visible;
+}
+
+.menu .menu-column {
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.menu .menu-column ul {
+    width: 100%;
+}
+
+.menu .menu-column ul li {
+    width: 100%;
+}
+
+.menu .menu-column li a {
+    text-align: center;
+    display: block;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    line-height: 26px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #02264f;
+}
+
+.menu .menu-column li a:hover {
+    color: rgb(255, 48, 79);
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+
+.footer-wrap {
+    text-align: center;
+    background-color: white;
+    color: rgb(99, 99, 99);
+}
+
+.footer-top {
+    font-size: 20px;
+}
+
+.footer-top span {
+    color: #999;
+    font-size: 15px;
+}
+
+.footer-bottom {
+    color: #999;
+    font-size: 15px;
+}
+
+.sidebar {
+    text-align: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    overflow: auto;
+    z-index: 400;
+}
+
+.sidebar li a {
+    text-decoration: none;
+    display: block;
+    color: #000;
+    padding: 8px 15px 8px 15px;
+    font-weight: bold;
+    font-family: Godo;
+}
+
+.sidebar li a.sidebarMain {
+    background-color: rgb(255, 48, 79);
+    color: #fff;
+}
+
+.sidebar li a:hover:not(.sidebar) {
+    background-color: #333;
+    color: #fff;
+}
+
+.info-table {
+    width: 50%;
+    margin: auto;
+}
+
+.table-bordered {
+    border: 1px solid #ffb6b6;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    text-align: center;
+}
+
+.table td, .table th {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #ffb6b6;
+}
+
+.table-bordered {
+    border: 1px solid #ffb6b6;
+}
+
+.table-bordered td, .table-bordered th {
+    border: 1px solid #ffb6b6;
+}
+
+.table-bordered thead td, .table-bordered thead th {
+    border-bottom-width: 2px;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ffb6b6;
+}
+
+/* 반응형 */
+@media screen and (max-width: 768px) {
+    .navbar_menu {
+        width: 100%;
+        display: none;
+    }
+
+    .navbar_toggleBtn {
+        display: block;
+    }
+
+    .navbar_search.active,
+    .navbar_menu.active {
+        display: flex;
+    }
+
+    body > header > nav > div.col-4 > ul > li > a:hover {
+        color: rgb(255, 48, 79);
+        text-decoration: none;
+    }
+}

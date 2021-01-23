@@ -1,0 +1,189 @@
+@font-face {
+	src: url(../font/GodoM.ttf);
+
+	font-family: "godoM";
+}
+.wrap {
+	height: 100%;
+	width: 100%;
+	background-image: url(../img/login/wall-2558279_1920.jpg);
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+}
+.form-wrap {
+	width: 380px;
+	height: 600px;
+	position: relative;
+	margin: 6% auto;
+	background: floralwhite;
+	padding: 5px;
+	overflow: hidden;
+}
+.button-wrap {
+	width: 230px;
+	margin: 35px auto;
+	position: relative;
+	box-shadow: 0 0 600px 9px #fff3e0;
+	border-radius: 30px;
+}
+.togglebtn {
+	padding: 10px 30px;
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+	outline: none;
+	position: relative;
+}
+#btn {
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 110px;
+	height: 100%;
+	background: linear-gradient(to right, #FFEFCD, #F6E6B4);
+	border-radius: 30px;
+	transition: 0.5s;
+}
+.social-icons {
+	margin: 30px auto;
+	text-align: center;
+}
+.logo img {
+	width: 150px;
+}
+.input-group {
+	top: 180px;
+	position: absolute;
+	width: 280px;
+	transition: 0.5s;
+}
+
+.input-field::placeholder {
+	font-size: 0.7rem;
+}
+.input-group::placeholder {
+	font-size: 0.7rem;
+}
+.input-field_log::placeholder {
+	font-size: 0.7rem;
+}
+.input-field_log {
+	width: 100%;
+	padding: 10px 0;
+	margin: 5px 0;
+	border: none;
+	border-bottom: 1px solid #999;
+	outline: none;
+	background: transparent;
+}
+.input-field {
+	width: 80%;
+	padding: 10px 0;
+	margin: 5px 0;
+	border: none;
+	border-bottom: 1px solid #999;
+	outline: none;
+	background: transparent;
+}
+
+.input-check {
+	width: 65%;
+	padding: 10px 0;
+	margin: 5px 0;
+	border: none;
+	border-bottom: 1px solid #999;
+	outline: none;
+	background: transparent;
+}
+.submitBtn {
+	width: 85%;
+	padding: 10px 30px;
+	cursor: pointer;
+	display: block;
+	margin: auto;
+	background: linear-gradient(to right, #FFEFCD, #F6E6B4);
+	border: 0;
+	outline: none;
+	border-radius: 30px;
+}
+.idCheckBtn {
+	width: 30%;
+	cursor: pointer;
+	height: 37.78px;
+	background: linear-gradient(to right, #FFEFCD, #F6E6B4);
+	border: 0;
+	outline: none;
+	border-radius: 30px;
+	text-align: center;
+	font-family: "godoM";
+}
+.checkbox {
+	margin: 30px 10px 30px 0;
+}
+
+#login {
+	left: 50px;
+}
+#register {
+	left: 450px;
+}
+
+.id-botton {
+	float: inline-start;
+}
+.pwCheckBtn {
+	border: solid 5px white;
+	width: 15px;
+	height: 15px;
+	border-radius: 75px;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 12px;
+	vertical-align: middle;
+	line-height: 150px;
+}
+.pwckCheckBtn {
+	border: solid 5px white;
+	width: 15px;
+	height: 15px;
+	border-radius: 75px;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 12px;
+	vertical-align: middle;
+	line-height: 150px;
+}
+.emailCheckBtn {
+	border: solid 5px white;
+	width: 15px;
+	height: 15px;
+	border-radius: 75px;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 12px;
+	vertical-align: middle;
+	line-height: 150px;
+}
+.nameCheckBtn {
+	border: solid 5px white;
+	width: 15px;
+	height: 15px;
+	border-radius: 75px;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 12px;
+	vertical-align: middle;
+	line-height: 150px;
+}
+.telCheckBtn {
+	border: solid 5px white;
+	width: 15px;
+	height: 15px;
+	border-radius: 75px;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 12px;
+	vertical-align: middle;
+	line-height: 150px;
+}

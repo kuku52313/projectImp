@@ -1,0 +1,56 @@
+/*
+font: italic smll-caps bold 12px/30px Georgia, serif
+font-style
+font-variant
+font-weight
+font-size/line-height
+
+font-family: $
+*/
+.checkout.b {
+    cursor: pointer;
+    padding-top: 2px;
+    color: #1e88e5;
+    font-size: 24px;
+    font-weight: normal;
+    float: right;
+  }
+  .checkout-inpt {
+    float: right;
+    font-size: 23px;
+    font-weight: normal;
+  }
+  .order_delivery dd span {
+    line-height: 11px !important;
+  }
+  .delivery-memo {
+    width: 100%;
+  }
+  @media screen and (min-width: 768px) {
+  #orderer_email1, #orderer_email2 {
+      width: 28%;
+  }
+  .orderpage .order_addr:last-child {
+      margin-left: 3px;
+  }
+  .check-certification-code {
+      min-width: 99px;
+  }
+  }
+  @media screen and (max-width: 768px) {
+  #address2 {
+      width: 100%;
+  }
+  .checkout.b {
+      font-size: 1.0em !important;
+  }
+  .order_delivery dt, .order_delivery dd {
+      padding: 10px 12px !important;
+  }
+  #certification_code {
+      min-width: 151px;
+  }
+  .check-certification-code {
+      padding: 13px 18px;
+  }
+  }
