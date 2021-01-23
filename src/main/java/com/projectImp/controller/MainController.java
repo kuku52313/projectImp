@@ -42,4 +42,9 @@ public class MainController {
         return map;
     }
 
+    @GetMapping("asgjagoajgiosagj")
+    public void test(){
+
+    }
+
 }
