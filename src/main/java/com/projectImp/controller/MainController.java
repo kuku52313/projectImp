@@ -1,6 +1,7 @@
 package com.projectImp.controller;
 
 import com.projectImp.service.MemberService;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+@Log4j
 @RequestMapping("/")
 @Controller
 public class MainController {
