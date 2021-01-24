@@ -1,9 +1,11 @@
 package com.projectImp.controller;
 
+import com.projectImp.domain.PageCriteriaVO;
+import com.projectImp.domain.PageDTO;
 import com.projectImp.service.MemberService;
-import lombok.extern.log4j.Log4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.projectImp.service.PageService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -14,24 +16,21 @@ import java.util.Map;
 public class MainController {
 
     private final MemberService memberService;
+    private final PageService pageService;
 
-    public MainController(MemberService memberService) {
+    public MainController(MemberService memberService, PageService pageService) {
         this.memberService = memberService;
+        this.pageService = pageService;
     }
 
     @GetMapping("/")
-    public String goIndex(){
+    public String goIndex(PageCriteriaVO cri, Model model){
+
+        model.addAttribute("photoList", memberService.getPhotoList(cri));
+        int total = pageService.getPhotoListTotal(cri);
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
+
         return "index";
-    }
-
-    @GetMapping("/login-page")
-    public String goLoginPage(){
-        return "login-page";
-    }
-
-    @GetMapping("/regist-photo")
-    public String registPhoto(){
-        return "regist-photo";
     }
 
     @PostMapping("/idCheck")
@@ -41,5 +40,8 @@ public class MainController {
         map.put("cnt", memberService.idCheckTest(userId));
         return map;
     }
+
+
+
 
 }

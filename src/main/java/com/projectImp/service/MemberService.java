@@ -1,10 +1,14 @@
 package com.projectImp.service;
 
 import com.projectImp.domain.MemberDTO;
+import com.projectImp.domain.PageCriteriaVO;
+import com.projectImp.domain.PhotoDTO;
 import com.projectImp.domain.UserDetailsDTO;
 import com.projectImp.persistence.MemberDAO;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MemberService {
@@ -31,5 +35,10 @@ public class MemberService {
 
     public int idCheckTest(String userId) {
         return memberDAO.idCheckTest(userId);
+    }
+
+    public List<PhotoDTO> getPhotoList(PageCriteriaVO cri) {
+        cri.setOffset((cri.getPageNum()-1)*cri.getAmount());
+        return memberDAO.getPhotoList(cri);
     }
 }

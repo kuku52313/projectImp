@@ -36,7 +36,7 @@
         <h4><b>Introduce My Photo</b></h4>
         <!-- 비로그인 상태-->
         <sec:authorize access="isAnonymous()">
-        <p class="w3-text-grey"><a href="/login-page">Sign in/up</a></p>
+        <p class="w3-text-grey"><a href="/member/login-page">Sign in/up</a></p>
         </sec:authorize>
         <!-- 로그인 상태-->
         <sec:authorize access="isAuthenticated()">
@@ -44,9 +44,19 @@
         </sec:authorize>
     </div>
     <div class="w3-bar-block">
-        <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a>
-        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+        <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Gallery</a>
+
+        <sec:authorize access="isAuthenticated()">
+        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>My Gallery</a>
+        <a href="/photo/regist-photo" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-photo w3-margin-right"></i>Regist Photo</a>
+            <br>
+            <a class="w3-bar-item w3-button w3-padding" href="#" onclick="$('#logout-form').submit();">로그아웃</a>
+            <!-- Logout Form -->
+            <form id="logout-form" action="/logout" method="POST">
+                <!-- 포스트방식으로 리퀘스트시 무조건 넣기 -->
+                <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
+            </form>
+        </sec:authorize>
     </div>
     <div class="w3-panel w3-large">
         <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -71,101 +81,50 @@
         <div class="w3-container">
             <h1><b>Introduce My Photo</b></h1>
             <div class="w3-section w3-bottombar w3-padding-16">
-                <span class="w3-margin-right">Filter:</span>
-                <button class="w3-button w3-black">ALL</button>
-                <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Design</button>
-                <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Photos</button>
-                <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>
+
             </div>
         </div>
     </header>
 
-    <!-- First Photo Grid-->
-    <div class="w3-row-padding">
-        <div class="w3-third w3-container w3-margin-bottom">
-            <img src="/resources/img/DSC09031.JPG" alt="1111" style="width:100%" class="w3-hover-opacity img2" onclick="onClick(this)">
-            <div class="w3-container ">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesen</p>
-            </div>
-        </div>
-        <div class="w3-third w3-container w3-margin-bottom">
-            <img src="/resources/img/DSC07998.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2" onclick="onClick(this)">
-            <div class="w3-container ">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            </div>
-        </div>
-        <div class="w3-third w3-container">
-            <img src="/resources/img/DSC08013.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
-            <div class="w3-container ">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            </div>
-        </div>
-    </div>
+    <c:set var="i" value="0" />
+    <c:set var="j" value="3" />
 
-    <!-- Second Photo Grid-->
+    <c:forEach items="${photoList}" var="list" varStatus="status">
+        <c:if test="${i%j == 0 }">
     <div class="w3-row-padding">
+        </c:if>
         <div class="w3-third w3-container w3-margin-bottom">
-            <img src="/resources/img/DSC08094.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
+            <img src="${list.photoImgPath}${list.photoThumbnail}" alt="${list.photoImgPath}${list.photoImg}" style="width:100%" class="w3-hover-opacity img2" onclick="onClick(this)">
             <div class="w3-container ">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+                <p><b>${list.photoTitle}</b></p>
+                <p>Author : ${list.photoMemberId}</p>
+                <p>${list.photoContent}</p>
             </div>
         </div>
-        <div class="w3-third w3-container w3-margin-bottom">
-            <img src="/resources/img/DSC08184-2.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
-            <div class="w3-container">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            </div>
-        </div>
-        <div class="w3-third w3-container">
-            <img src="/resources/img/DSC08585.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
-            <div class="w3-container ">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            </div>
-        </div>
+        <c:if test="${i%j == j-1 }">
     </div>
+        </c:if>
+        <c:set var="i" value="${i+1 }" />
 
-    <!-- 3 Photo Grid-->
-    <div class="w3-row-padding">
-        <div class="w3-third w3-container w3-margin-bottom">
-            <img src="/resources/img/DSC08184-2.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
-            <div class="w3-container w3-white">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            </div>
-        </div>
-        <div class="w3-third w3-container w3-margin-bottom">
-            <img src="/resources/img/DSC09055.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
-            <div class="w3-container w3-white">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            </div>
-        </div>
-        <div class="w3-third w3-container">
-            <img src="/resources/img/DSC08585.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
-            <div class="w3-container w3-white">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            </div>
-        </div>
-    </div>
-
+    </c:forEach>
     <!-- Pagination -->
     <div class="w3-center w3-padding-32">
         <div class="w3-bar">
-            <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-            <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-            <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-            <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-            <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-            <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+            <c:if test="${pageMaker.prev}">
+            <a href="/?pageNum=${pageMaker.startPage - 1}&amount=9" class="w3-bar-item w3-button w3-hover-black">«</a>
+            </c:if>
+
+            <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+            <a href="/?pageNum=${num}&amount=9" class="w3-bar-item w3-hover-black ${pageMaker.cri.pageNum == num ? "w3-button w3-black":""} ">${num}</a>
+            </c:forEach>
+<%--             w3-bar-item w3-black w3-hover-black ${pageMaker.cri.pageNum == num ? "w3-button":""}    --%>
+
+            <c:if test="${pageMaker.next}">
+            <a href="/?pageNum=${pageMaker.endPage + 1}&amount=9" class="w3-bar-item w3-button w3-hover-black">»</a>
+            </c:if>
         </div>
     </div>
+
 
 
     <!-- Footer -->
@@ -210,10 +169,10 @@
 
     // Modal Image Gallery
     function onClick(element) {
-        document.getElementById("img01").src = element.src;
+        document.getElementById("img01").src = element.alt;
         document.getElementById("modal01").style.display = "block";
         var captionText = document.getElementById("caption");
-        captionText.innerHTML = element.alt;
+        // captionText.innerHTML = element.alt;
     }
 </script>
 

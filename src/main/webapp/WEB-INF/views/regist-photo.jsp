@@ -13,6 +13,7 @@
     <script src="/resources/jquery-ui/jquery-ui.js"></script>
     <script src="/resources/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <title>IMP Regist</title>
 
@@ -26,12 +27,29 @@
         </a>
         <img src="/resources/mainLogo/logo.png" style="width:100%;" class="w3-round"><br><br>
         <h4><b>Introduce My Photo</b></h4>
-        <p class="w3-text-grey">${user.memberName}님</p>
+        <!-- 비로그인 상태-->
+        <sec:authorize access="isAnonymous()">
+            <p class="w3-text-grey"><a href="/member/login-page">Sign in/up</a></p>
+        </sec:authorize>
+        <!-- 로그인 상태-->
+        <sec:authorize access="isAuthenticated()">
+            <p class="w3-text-grey">${user.memberName}님</p>
+        </sec:authorize>
     </div>
     <div class="w3-bar-block">
-        <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a>
-        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+        <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding "><i class="fa fa-th-large fa-fw w3-margin-right"></i>Gallery</a>
+
+        <sec:authorize access="isAuthenticated()">
+            <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>My Gallery</a>
+            <a href="/photo/regist-photo" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-photo w3-margin-right"></i>Regist Photo</a>
+            <br>
+            <a class="w3-bar-item w3-button w3-padding" href="#" onclick="$('#logout-form').submit();">로그아웃</a>
+            <!-- Logout Form -->
+            <form id="logout-form" action="/logout" method="POST">
+                <!-- 포스트방식으로 리퀘스트시 무조건 넣기 -->
+                <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
+            </form>
+        </sec:authorize>
     </div>
     <div class="w3-panel w3-large">
         <i class="fa fa-facebook-official w3-hover-opacity"></i>

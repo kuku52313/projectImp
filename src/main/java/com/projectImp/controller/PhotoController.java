@@ -5,6 +5,7 @@ import com.projectImp.domain.UploadImgDTO;
 import com.projectImp.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,11 @@ public class PhotoController {
         this.photoService = photoService;
     }
 
+    @GetMapping("/regist-photo")
+    public String registPhoto(){
+        return "regist-photo";
+    }
+
     @PostMapping("/photo-regist-up")
     public String imageFileRegistration(HttpServletRequest request, PhotoDTO photoDTO, UploadImgDTO uploadImgDTO, Principal principal) throws IllegalStateException, IOException {
 
@@ -30,6 +36,6 @@ public class PhotoController {
 
         photoService.imageFileRegistration(request,photoDTO,uploadImgDTO);
 
-        return "regist-photo";
+        return "redirect:/photo/regist-photo";
     }
 }
