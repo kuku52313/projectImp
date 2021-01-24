@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.projectImp.persistence.PhotoDAO">
+
+    <insert id="savePhoto">
+        <![CDATA[
+        INSERT INTO photo(PHOTO_REGDATE,PHOTO_TITLE,PHOTO_CONTENT,PHOTO_DATE,PHOTO_MEMBER_ID,PHOTO_IMG_PATH,PHOTO_IMG,PHOTO_THUMBNAIL)
+        VALUES(NOW(),#{photoTitle},#{photoContent},#{photoDate},#{photoMemberId},#{photoImgPath},#{photoImg},#{photoThumbnail})
+        ]]>
+    </insert>
+
+</mapper>

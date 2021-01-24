@@ -16,9 +16,12 @@
     <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
 </head>
 <body>
-<input type="hidden" id="idCheckHidden" value="0"/> <input type="hidden" id="pwCheckHidden" value="0"/> <input type="hidden" id="pwckCheckHidden" value="0"/> <input type="hidden" id="emailCheckHidden"
-                                                                                                                                                                     value="0"/>
-<input type="hidden" id="nameCheckHidden" value="0"/> <input type="hidden" id="telCheckHidden" value="0"/>
+<input type="hidden" id="idCheckHidden" value="0"/>
+<input type="hidden" id="pwCheckHidden" value="0"/>
+<input type="hidden" id="pwckCheckHidden" value="0"/>
+<input type="hidden" id="emailCheckHidden" value="0"/>
+<input type="hidden" id="nameCheckHidden" value="0"/>
+<input type="hidden" id="telCheckHidden" value="0"/>
 <div class="wrap">
     <div class="form-wrap">
         <!-- toggle -->

@@ -18,15 +18,10 @@
 		<!--isAnonymous()-->
 
 		<!-- 회원만 접근 가능 -->
-		<s:intercept-url pattern="/member/*" access="hasRole('ROLE_MEMBER')" />
-		<s:intercept-url pattern="/basket/*" access="hasRole('ROLE_MEMBER')" />
-		<s:intercept-url pattern="/like/*" access="hasRole('ROLE_MEMBER')" />
-		<s:intercept-url pattern="/order/*" access="hasRole('ROLE_MEMBER')" />
-		<s:intercept-url pattern="/board/*" access="hasRole('ROLE_MEMBER')" />
+		<s:intercept-url pattern="/photo/*" access="hasRole('ROLE_MEMBER')" />
 
 		<!-- 관리자 권한 -->
 		<s:intercept-url pattern="/manager/*" access="hasRole('ROLE_ADMIN')" />
-		<s:intercept-url pattern="/product/*" access="hasRole('ROLE_ADMIN')" />
 
 		<!-- 최고 관리자 권한 -->
 		<s:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')" />
@@ -43,7 +38,8 @@
 		</s:session-management>
 
 		<!-- 로그인 처리 -->
-		<s:form-login username-parameter="memberId" password-parameter="memberPw" login-page="/member/login-page" authentication-failure-handler-ref="loginFailHandler" authentication-success-handler-ref="loginSuccessHandler" />
+		<s:form-login username-parameter="memberId" password-parameter="memberPw" login-page="/member/login-page"
+					  authentication-failure-handler-ref="loginFailHandler" authentication-success-handler-ref="loginSuccessHandler" />
 
 		<!-- 로그아웃 처리 -->
 		<s:logout logout-success-url="/" invalidate-session="true" delete-cookies="JSESSIONID" />

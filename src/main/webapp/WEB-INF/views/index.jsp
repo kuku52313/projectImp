@@ -17,7 +17,7 @@
 <script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
 <style>
     body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-    img {
+    .img2 {
         width: 600px;
         height: 400px;
         object-fit: cover;
@@ -25,16 +25,23 @@
 
 </style>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
-
+<sec:authentication property="principal" var="user" />
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
     <div class="w3-container">
         <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
             <i class="fa fa-remove"></i>
         </a>
-        <img src="/resources/profile/logo.png" style="width:100%;" class="w3-round"><br><br>
+        <img src="/resources/mainLogo/logo.png" style="width:100%;" class="w3-round"><br><br>
         <h4><b>Introduce My Photo</b></h4>
-        <p class="w3-text-grey">김희곤 회원님</p>
+        <!-- 비로그인 상태-->
+        <sec:authorize access="isAnonymous()">
+        <p class="w3-text-grey"><a href="/login-page">Sign in/up</a></p>
+        </sec:authorize>
+        <!-- 로그인 상태-->
+        <sec:authorize access="isAuthenticated()">
+            <p class="w3-text-grey">${user.memberName}님</p>
+        </sec:authorize>
     </div>
     <div class="w3-bar-block">
         <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a>
@@ -76,21 +83,21 @@
     <!-- First Photo Grid-->
     <div class="w3-row-padding">
         <div class="w3-third w3-container w3-margin-bottom">
-            <img src="/resources/img/DSC09031.JPG" alt="1111" style="width:100%" class="w3-hover-opacity" onclick="onClick(this)">
+            <img src="/resources/img/DSC09031.JPG" alt="1111" style="width:100%" class="w3-hover-opacity img2" onclick="onClick(this)">
             <div class="w3-container ">
                 <p><b>Lorem Ipsum</b></p>
                 <p>Praesen</p>
             </div>
         </div>
         <div class="w3-third w3-container w3-margin-bottom">
-            <img src="/resources/img/DSC07998.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity" onclick="onClick(this)">
+            <img src="/resources/img/DSC07998.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2" onclick="onClick(this)">
             <div class="w3-container ">
                 <p><b>Lorem Ipsum</b></p>
                 <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
             </div>
         </div>
         <div class="w3-third w3-container">
-            <img src="/resources/img/DSC08013.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity">
+            <img src="/resources/img/DSC08013.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
             <div class="w3-container ">
                 <p><b>Lorem Ipsum</b></p>
                 <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
@@ -101,21 +108,21 @@
     <!-- Second Photo Grid-->
     <div class="w3-row-padding">
         <div class="w3-third w3-container w3-margin-bottom">
-            <img src="/resources/img/DSC08094.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity">
+            <img src="/resources/img/DSC08094.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
             <div class="w3-container ">
                 <p><b>Lorem Ipsum</b></p>
                 <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
             </div>
         </div>
         <div class="w3-third w3-container w3-margin-bottom">
-            <img src="/resources/img/DSC08184-2.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity">
+            <img src="/resources/img/DSC08184-2.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
             <div class="w3-container">
                 <p><b>Lorem Ipsum</b></p>
                 <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
             </div>
         </div>
         <div class="w3-third w3-container">
-            <img src="/resources/img/DSC08585.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity">
+            <img src="/resources/img/DSC08585.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
             <div class="w3-container ">
                 <p><b>Lorem Ipsum</b></p>
                 <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
@@ -126,21 +133,21 @@
     <!-- 3 Photo Grid-->
     <div class="w3-row-padding">
         <div class="w3-third w3-container w3-margin-bottom">
-            <img src="/resources/img/DSC08184-2.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity">
+            <img src="/resources/img/DSC08184-2.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
             <div class="w3-container w3-white">
                 <p><b>Lorem Ipsum</b></p>
                 <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
             </div>
         </div>
         <div class="w3-third w3-container w3-margin-bottom">
-            <img src="/resources/img/DSC09055.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity">
+            <img src="/resources/img/DSC09055.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
             <div class="w3-container w3-white">
                 <p><b>Lorem Ipsum</b></p>
                 <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
             </div>
         </div>
         <div class="w3-third w3-container">
-            <img src="/resources/img/DSC08585.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity">
+            <img src="/resources/img/DSC08585.JPG" alt="Norway" style="width:100%" class="w3-hover-opacity img2">
             <div class="w3-container w3-white">
                 <p><b>Lorem Ipsum</b></p>
                 <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
