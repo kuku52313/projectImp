@@ -1,14 +1,12 @@
 package com.projectImp.controller;
 
+import com.projectImp.domain.PageCriteriaVO;
 import com.projectImp.domain.PhotoDTO;
 import com.projectImp.domain.UploadImgDTO;
 import com.projectImp.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -37,5 +35,13 @@ public class PhotoController {
         photoService.imageFileRegistration(request,photoDTO,uploadImgDTO);
 
         return "redirect:/photo/regist-photo";
+    }
+
+    @GetMapping("/photo-remove")
+    public String removingPhoto(@RequestParam("photoNumber") String photoNumber, PageCriteriaVO cri) {
+
+        photoService.removingPhoto(photoNumber);
+
+        return "redirect:/?pageNum=" + cri.getPageNum() +"&amount=" + cri.getAmount();
     }
 }

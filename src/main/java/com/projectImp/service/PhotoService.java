@@ -52,4 +52,8 @@ public class PhotoService {
         photoDAO.savePhoto(photoDTO);
 
     }
+
+    public void removingPhoto(String photoNumber) {
+        photoDAO.removingPhoto(photoNumber);
+    }
 }

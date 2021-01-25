@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="/resources/jquery/3.5.1/jquery.min.js"></script>
 <script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
 <style>
@@ -21,6 +22,16 @@
         width: 600px;
         height: 400px;
         object-fit: cover;
+    }
+
+    .trash {
+        background-image: url("/resources/img/trash-alt-regular.svg");
+        background-size: cover;
+        height: 24px;
+        width: 21px;
+        display: inline;
+        float: right;
+        ;
     }
 
 </style>
@@ -88,7 +99,10 @@
 
     <c:set var="i" value="0" />
     <c:set var="j" value="3" />
-
+<sec:authorize access="isAuthenticated()">
+    <c:set var="user" value="${user.username}"/>
+</sec:authorize>
+<div>
     <c:forEach items="${photoList}" var="list" varStatus="status">
         <c:if test="${i%j == 0 }">
     <div class="w3-row-padding">
@@ -96,7 +110,17 @@
         <div class="w3-third w3-container w3-margin-bottom">
             <img src="${list.photoImgPath}${list.photoThumbnail}" alt="${list.photoImgPath}${list.photoImg}" style="width:100%" class="w3-hover-opacity img2" onclick="onClick(this)">
             <div class="w3-container ">
-                <p><b>${list.photoTitle}</b></p>
+                <p>
+                    <sec:authorize access="isAuthenticated()">
+                <c:set var="author" value="${list.photoMemberId}"/>
+                        <c:if test="${user eq author}">
+                <div class="trash" onclick="location.href='/photo/photo-remove?photoNumber=${list.photoNumber}&pageNum=${pageMaker.cri.pageNum}&amount=9'"></div>
+                        </c:if>
+                </sec:authorize>
+                <b>${list.photoTitle}</b>
+                </p>
+
+
                 <p>Author : ${list.photoMemberId}</p>
                 <p>${list.photoContent}</p>
             </div>
@@ -105,8 +129,8 @@
     </div>
         </c:if>
         <c:set var="i" value="${i+1 }" />
-
     </c:forEach>
+</div>
     <!-- Pagination -->
     <div class="w3-center w3-padding-32">
         <div class="w3-bar">
@@ -117,7 +141,6 @@
             <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
             <a href="/?pageNum=${num}&amount=9" class="w3-bar-item w3-hover-black ${pageMaker.cri.pageNum == num ? "w3-button w3-black":""} ">${num}</a>
             </c:forEach>
-<%--             w3-bar-item w3-black w3-hover-black ${pageMaker.cri.pageNum == num ? "w3-button":""}    --%>
 
             <c:if test="${pageMaker.next}">
             <a href="/?pageNum=${pageMaker.endPage + 1}&amount=9" class="w3-bar-item w3-button w3-hover-black">»</a>
@@ -149,6 +172,7 @@
         <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
             <img id="img01" class="w3-image">
             <p id="caption"></p>
+
         </div>
     </div>
 
@@ -169,10 +193,11 @@
 
     // Modal Image Gallery
     function onClick(element) {
+
         document.getElementById("img01").src = element.alt;
         document.getElementById("modal01").style.display = "block";
         var captionText = document.getElementById("caption");
-        // captionText.innerHTML = element.alt;
+        // captionText.innerHTML = element.val();
     }
 </script>
 

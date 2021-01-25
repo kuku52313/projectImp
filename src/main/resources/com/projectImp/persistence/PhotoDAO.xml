@@ -8,4 +8,10 @@
         ]]>
     </insert>
 
+    <delete id="removingPhoto">
+
+        DELETE FROM photo WHERE PHOTO_NUMBER = #{param}
+
+    </delete>
+
 </mapper>
