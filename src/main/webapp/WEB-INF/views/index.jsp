@@ -108,7 +108,7 @@
     <div class="w3-row-padding">
         </c:if>
         <div class="w3-third w3-container w3-margin-bottom">
-            <img src="${list.photoImgPath}${list.photoThumbnail}" alt="${list.photoImgPath}${list.photoImg}" style="width:100%" class="w3-hover-opacity img2" onclick="onClick(this)">
+            <img src="${list.photoImgPath}${list.photoThumbnail}" alt="${list.photoNumber}" style="width:100%" class="w3-hover-opacity img2" onclick="onClick(this)">
             <div class="w3-container ">
                 <p>
                     <sec:authorize access="isAuthenticated()">
@@ -123,6 +123,10 @@
 
                 <p>Author : ${list.photoMemberId}</p>
                 <p>${list.photoContent}</p>
+                <input type="hidden" id="photoTitle${list.photoNumber}" value="${list.photoTitle}">
+                <input type="hidden" id="photoMemberId${list.photoNumber}" value="${list.photoMemberId}">
+                <input type="hidden" id="photoContent${list.photoNumber}" value="${list.photoContent}">
+                <input type="hidden" id="photoImgSrc${list.photoNumber}" value="${list.photoImgPath}${list.photoImg}">
             </div>
         </div>
         <c:if test="${i%j == j-1 }">
@@ -171,6 +175,9 @@
         <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
         <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
             <img id="img01" class="w3-image">
+            <br>
+            <h id="Mtitle"></h>
+            <p id="Mauthor"></p>
             <p id="caption"></p>
 
         </div>
@@ -194,10 +201,25 @@
     // Modal Image Gallery
     function onClick(element) {
 
-        document.getElementById("img01").src = element.alt;
+        let imgId = '#photoImgSrc'+element.alt;
+        let titleId = '#photoTitle'+element.alt;
+        let memberId = '#photoMemberId'+element.alt;
+        let contentId = '#photoContent'+element.alt;
+
+        let imgSrc = $(imgId).val();
+        let getTitle = $(titleId).val();
+        let getMember = $(memberId).val();
+        let getContent = $(contentId).val();
+
+
+        document.getElementById("img01").src = imgSrc;
         document.getElementById("modal01").style.display = "block";
         var captionText = document.getElementById("caption");
-        // captionText.innerHTML = element.val();
+        var titleText = document.getElementById("Mtitle");
+        var MemberText = document.getElementById("Mauthor");
+        captionText.innerHTML = getContent;
+        titleText.innerHTML = getTitle;
+        MemberText.innerHTML = "Author : " + getMember;
     }
 </script>
 
