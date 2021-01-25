@@ -40,7 +40,6 @@ public class MainController {
         int total = pageService.goMyGalleryListTotal(principal.getName());
         model.addAttribute("pageMaker", new PageDTO(cri, total));
 
-
         return "index";
     }
 
