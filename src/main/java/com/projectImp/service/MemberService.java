@@ -41,4 +41,9 @@ public class MemberService {
         cri.setOffset((cri.getPageNum()-1)*cri.getAmount());
         return memberDAO.getPhotoList(cri);
     }
+
+    public List<PhotoDTO> goMyGallery(PageCriteriaVO cri, String memberId) {
+        cri.setOffset((cri.getPageNum()-1)*cri.getAmount());
+        return memberDAO.goMyGallery(cri, memberId);
+    }
 }

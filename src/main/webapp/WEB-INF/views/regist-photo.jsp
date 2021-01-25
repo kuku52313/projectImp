@@ -40,7 +40,7 @@
         <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding "><i class="fa fa-th-large fa-fw w3-margin-right"></i>Gallery</a>
 
         <sec:authorize access="isAuthenticated()">
-            <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>My Gallery</a>
+            <a href="/my-gallery?myGallery=myGallery" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>My Gallery</a>
             <a href="/photo/regist-photo" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-photo w3-margin-right"></i>Regist Photo</a>
             <br>
             <a class="w3-bar-item w3-button w3-padding" href="#" onclick="$('#logout-form').submit();">로그아웃</a>

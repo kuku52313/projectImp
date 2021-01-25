@@ -4,4 +4,8 @@
     <select id="getPhotoListTotal" resultType="int">
         SELECT COUNT(*) FROM photo
     </select>
+
+    <select id="goMyGalleryListTotal" resultType="int">
+        SELECT COUNT(*) FROM photo WHERE PHOTO_MEMBER_ID = #{memberId}
+    </select>
 </mapper>

@@ -14,7 +14,11 @@ public class PageService {
         this.pagingDAO = pagingDAO;
     }
 
-    public int getPhotoListTotal(PageCriteriaVO cri) {
+    public int getPhotoListTotal() {
         return pagingDAO.getPhotoListTotal();
+    }
+
+    public int goMyGalleryListTotal(String memberId) {
+        return pagingDAO.goMyGalleryListTotal(memberId);
     }
 }

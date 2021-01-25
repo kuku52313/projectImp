@@ -18,4 +18,6 @@ public interface MemberDAO {
     int idCheckTest(String userId);
 
     List<PhotoDTO> getPhotoList(PageCriteriaVO cri);
+
+    List<PhotoDTO> goMyGallery(PageCriteriaVO cri, String memberId);
 }

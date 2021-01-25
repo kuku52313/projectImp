@@ -36,6 +36,7 @@
 
 </style>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
+<c:set var="myGallery" value="${param.myGallery}"/>
 <sec:authentication property="principal" var="user" />
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
@@ -55,10 +56,10 @@
         </sec:authorize>
     </div>
     <div class="w3-bar-block">
-        <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Gallery</a>
+        <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding ${myGallery ne 'myGallery' ? "w3-text-teal":""}"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Gallery</a>
 
         <sec:authorize access="isAuthenticated()">
-        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>My Gallery</a>
+        <a href="/my-gallery?myGallery=myGallery" onclick="w3_close()" class="w3-bar-item w3-button w3-padding ${myGallery eq 'myGallery' ? "w3-text-teal":""}"><i class="fa fa-th-large fa-fw w3-margin-right"></i>My Gallery</a>
         <a href="/photo/regist-photo" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-photo w3-margin-right"></i>Regist Photo</a>
             <br>
             <a class="w3-bar-item w3-button w3-padding" href="#" onclick="$('#logout-form').submit();">로그아웃</a>
@@ -99,8 +100,13 @@
 
     <c:set var="i" value="0" />
     <c:set var="j" value="3" />
+    <%-- 유저가 로그인시 user라는 변수로 회원아이디저장--%>
 <sec:authorize access="isAuthenticated()">
     <c:set var="user" value="${user.username}"/>
+</sec:authorize>
+    <%-- 유저가 관리자계정일시 생성--%>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+    <c:set var="admin" value="admin"/>
 </sec:authorize>
 <div>
     <c:forEach items="${photoList}" var="list" varStatus="status">
@@ -113,8 +119,8 @@
                 <p>
                     <sec:authorize access="isAuthenticated()">
                 <c:set var="author" value="${list.photoMemberId}"/>
-                        <c:if test="${user eq author}">
-                <div class="trash" onclick="location.href='/photo/photo-remove?photoNumber=${list.photoNumber}&pageNum=${pageMaker.cri.pageNum}&amount=9'"></div>
+                        <c:if test="${user eq author || admin eq 'admin'}">
+                <div class="trash" onclick="location.href='/photo/photo-remove?photoNumber=${list.photoNumber}&pageNum=${pageMaker.cri.pageNum}&amount=9&memberId=${list.photoMemberId}'"></div>
                         </c:if>
                 </sec:authorize>
                 <b>${list.photoTitle}</b>
@@ -135,19 +141,22 @@
         <c:set var="i" value="${i+1 }" />
     </c:forEach>
 </div>
+
     <!-- Pagination -->
     <div class="w3-center w3-padding-32">
         <div class="w3-bar">
             <c:if test="${pageMaker.prev}">
-            <a href="/?pageNum=${pageMaker.startPage - 1}&amount=9" class="w3-bar-item w3-button w3-hover-black">«</a>
+            <a href="/${myGallery eq 'myGallery' ? "my-gallery":""}?pageNum=${pageMaker.startPage - 1}&amount=9${myGallery eq 'myGallery' ? "&myGallery=myGallery":""}"
+               class="w3-bar-item w3-button w3-hover-black">«</a>
             </c:if>
 
             <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-            <a href="/?pageNum=${num}&amount=9" class="w3-bar-item w3-hover-black ${pageMaker.cri.pageNum == num ? "w3-button w3-black":""} ">${num}</a>
+            <a href="/${myGallery eq 'myGallery' ? "my-gallery":""}?pageNum=${num}&amount=9${myGallery eq 'myGallery' ? "&myGallery=myGallery":""}"
+               class="w3-bar-item w3-hover-black ${pageMaker.cri.pageNum == num ? "w3-button w3-black":""} ">${num}</a>
             </c:forEach>
 
             <c:if test="${pageMaker.next}">
-            <a href="/?pageNum=${pageMaker.endPage + 1}&amount=9" class="w3-bar-item w3-button w3-hover-black">»</a>
+            <a href="/${myGallery eq 'myGallery' ? "my-gallery":""}?pageNum=${pageMaker.endPage + 1}&amount=9${myGallery eq 'myGallery' ? "&myGallery=myGallery":""}" class="w3-bar-item w3-button w3-hover-black">»</a>
             </c:if>
         </div>
     </div>
@@ -218,7 +227,7 @@
         var titleText = document.getElementById("Mtitle");
         var MemberText = document.getElementById("Mauthor");
         captionText.innerHTML = getContent;
-        titleText.innerHTML = getTitle;
+        titleText.innerHTML = "Title : " + getTitle;
         MemberText.innerHTML = "Author : " + getMember;
     }
 </script>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,11 +28,22 @@ public class MainController {
     public String goIndex(PageCriteriaVO cri, Model model){
 
         model.addAttribute("photoList", memberService.getPhotoList(cri));
-        int total = pageService.getPhotoListTotal(cri);
+        int total = pageService.getPhotoListTotal();
         model.addAttribute("pageMaker", new PageDTO(cri, total));
 
         return "index";
     }
+    @GetMapping("/my-gallery")
+    public String goMyGallery(PageCriteriaVO cri, Model model, Principal principal){
+
+        model.addAttribute("photoList", memberService.goMyGallery(cri,principal.getName()));
+        int total = pageService.goMyGalleryListTotal(principal.getName());
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
+
+
+        return "index";
+    }
+
 
     @PostMapping("/idCheck")
     @ResponseBody
