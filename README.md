@@ -12,8 +12,6 @@ https://tespad.tistory.com/11<br>
 </p>
 </p>
 
-소규모 사진갤러리 웹사이트를 목표로 만들었습니다
-회원가입, 로그인, 사진등록과 회원별 권한 분류로 사진삭제가 주 기능입니다
 
 ### -IDE-
 *IntelliJ*
@@ -37,6 +35,13 @@ https://tespad.tistory.com/11<br>
 + *관리자 테스트계정 ID : tester/ PW : qwe123Q! 대소문자 구별에 유의하여주시길 바랍니다*
 
 + *멤버 테스트계정 ID : member/ PW : qwe123Q! 대소문자 구별에 유의하여주시길 바랍니다*
+
+
+
+<p>
+  소규모 사진갤러리 웹사이트를 목표로 만들었습니다
+회원가입, 로그인, 사진등록과 회원별 권한 분류로 사진삭제가 주 기능입니다
+</p>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/74461921/105735586-37645000-5f77-11eb-8652-7310a173ee08.jpg" width="600">
