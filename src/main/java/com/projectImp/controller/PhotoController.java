@@ -40,10 +40,8 @@ public class PhotoController {
     @GetMapping("/photo-remove")
     public String removingPhoto(@RequestParam("photoNumber") String photoNumber, @RequestParam("memberId") String memberId,PageCriteriaVO cri, Principal principal,HttpServletRequest request) {
 
-        if (memberId.equals(principal.getName())) {
-            photoService.removingPhoto(photoNumber);
-        }else if(request.isUserInRole("ROLE_ADMIN")){
-            photoService.removingPhoto(photoNumber);
+        if (memberId.equals(principal.getName()) || request.isUserInRole("ROLE_ADMIN")) {
+            photoService.removingPhoto(photoNumber, memberId);
         }
 
         return "redirect:/?pageNum=" + cri.getPageNum() +"&amount=" + cri.getAmount();

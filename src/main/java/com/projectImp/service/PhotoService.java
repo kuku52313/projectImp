@@ -53,7 +53,7 @@ public class PhotoService {
 
     }
 
-    public void removingPhoto(String photoNumber) {
-        photoDAO.removingPhoto(photoNumber);
+    public void removingPhoto(String photoNumber, String memberId) {
+        photoDAO.removingPhoto(photoNumber, memberId);
     }
 }

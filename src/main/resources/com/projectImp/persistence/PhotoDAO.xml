@@ -10,7 +10,7 @@
 
     <delete id="removingPhoto">
 
-        DELETE FROM photo WHERE PHOTO_NUMBER = #{param}
+        DELETE FROM photo WHERE PHOTO_NUMBER = #{param1} and PHOTO_MEMBER_ID = #{param2}
 
     </delete>
 

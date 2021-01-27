@@ -6,5 +6,5 @@ public interface PhotoDAO {
 
     void savePhoto(PhotoDTO photoDTO);
 
-    void removingPhoto(String photoNumber);
+    void removingPhoto(String photoNumber, String memberId);
 }
