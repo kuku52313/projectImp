@@ -6,11 +6,11 @@ Project_IMP
 <h2 align="center">
 포트폴리오 개발블로그입니다<br>
 https://tespad.tistory.com/11<br>
+http://3.36.164.62/ 
 </h2>
 <p align="center">
 블로그에 포트폴리오 코드리뷰를 포스팅하였습니다<br>
-http://3.36.164.62:8080/ <br>
-dns작업 조만간 하겠습니다  
+
 </p>
 </p>
 
